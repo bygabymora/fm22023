@@ -46,7 +46,7 @@ const ContactUs = () => {
   };
 
   const redirectToWhatsApp = () => {
-    const whatsappMessage = `¡Hola Moraequipos! Escanee el código en el Congreso de Bacteriólogos de Medellín y quiero participar en el sorteo. Soy *${name}* y quiero pertenecer a su red.`;
+    const whatsappMessage = `¡Hola Moraequipos! Escanee el código en el Congreso de Bacteriólogos de Medellín. Soy *${name}* y quiero pertenecer a su red.`;
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
       whatsappMessage
     )}`;
