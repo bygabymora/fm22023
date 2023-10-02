@@ -71,7 +71,7 @@ const ContactUs = () => {
     // Agrega un retraso de 5 segundos (5000 milisegundos) antes de redirigir
     setTimeout(() => {
       redirectToWhatsApp();
-    }, 5000);
+    }, 10000);
   };
 
   return (
