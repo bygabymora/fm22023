@@ -170,6 +170,9 @@ const ContactUs = () => {
           <span className="text-white">Descargar PDF</span>
         </button>
       </form>
+      <p>
+        Serás redirigido a WhatsApp para que puedas contactarnos directamente.
+      </p>
     </div>
   );
 };
