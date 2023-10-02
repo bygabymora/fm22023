@@ -46,7 +46,7 @@ const ContactUs = () => {
   };
 
   const redirectToWhatsApp = () => {
-    const whatsappMessage = `¡Hola Moraequipos! Escanee el código en el Congreso de Bacteriólogos de Medellín. Soy *${name}* y quiero pertenecer a su red.`;
+    const whatsappMessage = `¡Hola Moraequipos! Escanee el código en el Congreso de Bacteriólogos de Medellín. Soy *${name}* y pude descargar el PDF.`;
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
       whatsappMessage
     )}`;
@@ -172,7 +172,7 @@ const ContactUs = () => {
       </form>
       <p>
         Serás redirigido a WhatsApp para que puedas contactarnos directamente y
-        así sabremos que ¡recibiste nuestro PDF!.
+        así sabremos que pudiste ¡descargar nuestro PDF!.
       </p>
     </div>
   );
