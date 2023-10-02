@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { useRouter } from 'next/router';
 import Banner from '../public/images/banner.png';
@@ -68,28 +68,31 @@ const ContactUs = () => {
     redirectToWhatsAppWithDelay();
   };
   const redirectToWhatsAppWithDelay = () => {
-    // Agrega un retraso de 5 segundos (5000 milisegundos) antes de redirigir
+    // Agrega un retraso de 10 segundos (10000 milisegundos) antes de redirigir
     setTimeout(() => {
       redirectToWhatsApp();
     }, 10000);
   };
 
   return (
-    <div className=" contact__container text-center">
+    <div className="contact__container text-center">
       <Image src={Banner} alt="Moraequipos presente"></Image>
       <h3 className="contact__title">
         Asegúrate de obtener resultados precisos y confiables usando agua ultra
         pura.
       </h3>
       <p>
-        Por favor ingresa tus datos y podras descargar el PDF con la
+        Por favor ingresa tus datos y podrás descargar el PDF con la
         información.
       </p>
       <br />
       <form
         className="contact__form text-center"
         ref={form}
-        onSubmit={sendEmail}
+        onSubmit={(e) => {
+          sendEmail(e);
+          handleDownloadPDF(); // Llama a la función para abrir el PDF
+        }}
       >
         <div className="contact__form-div">
           <label className="contact__form-tag">Nombre Completo*</label>
@@ -156,17 +159,7 @@ const ContactUs = () => {
 
         <input type="hidden" name="user_ticket" value={ticketNumber} />
         <br />
-        <button
-          className="button button--flex btn-contact"
-          type="button"
-          onClick={(e) => {
-            sendEmail(e);
-
-            redirectToWhatsAppWithDelay();
-
-            handleDownloadPDF();
-          }}
-        >
+        <button className="button button--flex btn-contact" type="submit">
           <span className="text-white">Descargar PDF</span>
         </button>
       </form>
