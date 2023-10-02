@@ -145,10 +145,10 @@ const ContactUs = () => {
             required
           />
         </div>
-        <div class="privacy-checkbox">
+        <div className="privacy-checkbox">
           <input type="checkbox" id="dataConsent" name="dataConsent" required />
           {tab}
-          <label for="dataConsent">
+          <label htmlFor="dataConsent">
             Aceptas el tratamiento de datos y el envío de promociones
             (Moraequipos no entregará tus datos a terceros en ningún momento).
           </label>
