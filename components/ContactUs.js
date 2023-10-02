@@ -171,7 +171,8 @@ const ContactUs = () => {
         </button>
       </form>
       <p>
-        Serás redirigido a WhatsApp para que puedas contactarnos directamente.
+        Serás redirigido a WhatsApp para que puedas contactarnos directamente y
+        así sabremos que ¡recibiste nuestro PDF!.
       </p>
     </div>
   );
