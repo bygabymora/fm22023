@@ -1,0 +1,316 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;500;600&display=swap');
+/*=============== TailWind ===============*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 7rem;
+
+  /*========== Colors ==========*/
+
+  --title-color: #8b1414;
+  --title-color-dark: #47383d;
+  --text-color: #788b9b;
+  --dark-text-color: #414b53;
+  --body-color: white;
+  --container-color: #fff;
+  --yellow: #ffd700;
+
+  /*========== Font and typography ==========*/
+  --title-font: 'Montserrat', sans-serif;
+  --subtitle-font: 'Roboto', serif;
+  --text-font: 'Lato', sans-serif;
+
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --big-font-size: 3.5rem;
+  --h1-font-size: 2.25rem;
+  --h2-font-size: 1.5rem;
+  --h3-font-size: 1.25rem;
+  --normal-font-size: 1rem;
+  --small-font-size: 0.875rem;
+  --smaller-font-size: 0.813rem;
+  --tiny-font-size: 0.625rem;
+
+  /*========== Font weight ==========*/
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /*========== Margenes Bottom ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --mb-0-25: 0.25rem;
+  --mb-0-5: 0.5rem;
+  --mb-0-75: 0.75rem;
+  --mb-1: 1rem;
+  --mb-1-5: 1.5rem;
+  --mb-2: 2rem;
+  --mb-2-5: 2.5rem;
+  --mb-3: 3rem;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+  --z-modal: 1000;
+}
+
+/* Responsive typography */
+@media screen and (max-width: 992px) {
+  :root {
+    --big-font-size: 2.75rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1rem;
+    --normal-font-size: 0.938rem;
+    --small-font-size: 0.813rem;
+    --smaller-font-size: 0.75rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+button,
+input,
+textarea {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+}
+
+body {
+  background-color: var(--body-color);
+  color: var(--text-color);
+}
+
+h1,
+h2,
+h3 {
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.section {
+  padding: 6rem 0 2rem;
+}
+
+.section__title {
+  font-size: var(--h1-font-size);
+  color: var(--title-color);
+}
+
+.section__subtitle {
+  display: block;
+  font-size: var(--small-font-size);
+  margin-bottom: 4rem;
+}
+
+.section__title,
+.section__subtitle {
+  text-align: center;
+}
+
+/*=============== LAYOUT ===============*/
+.container {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.main {
+  margin-top: 8rem;
+}
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/*=============== BUTTONS ===============*/
+.button {
+  display: inline-block;
+  background-color: var(--title-color);
+  color: var(--container-color);
+  padding: 1.25rem 2rem;
+  border-radius: 1rem;
+  font-weight: var(--font-medium);
+}
+
+.button:hover {
+  background-color: var(--title-color-dark);
+}
+
+.button__icon {
+  margin-left: var(--mb-0-5);
+}
+
+.button--flex {
+  display: inline-flex;
+  align-items: center;
+}
+/*=============== CONTACT ===============*/
+.contact__container {
+  grid-template-columns: repeat(2, max-content);
+  justify-content: center;
+  column-gap: 1rem;
+  padding-bottom: 1rem;
+  margin: 3%;
+}
+.contact__title {
+  text-align: center;
+  font-size: var(--h3-font-size);
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.contact__info {
+  padding: 0 4rem 0 0;
+  margin-bottom: var(--mb-2-5);
+  text-align: center;
+}
+
+.contact__card {
+  background-color: var(--container-color);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  text-align: center;
+  margin: 1%;
+}
+
+.contact__card:hover {
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 1px;
+}
+
+.contact__card-icon {
+  font-size: 2rem;
+  color: var(--title-color);
+  margin-bottom: var(--mb-0-25);
+}
+
+.contact__card-title,
+.contact__card-data {
+  font-size: var(--small-font-size);
+}
+
+.contact__card-title {
+  font-weight: var(--font-medium);
+}
+.contact__card-data {
+  display: block;
+  margin-bottom: var(--mb-0-25);
+}
+
+.contact__button {
+  color: var(--title-color);
+  font-size: var(--small-font-size);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0.25rem;
+}
+
+.contact__button-icon {
+  font-size: 1rem;
+  transition: 0.3s;
+}
+.contact__button:hover .contact__button-icon {
+  transform: translate(0.25rem);
+}
+
+.contact__form {
+  width: 360px;
+}
+
+.contact__form-div {
+  position: relative;
+  margin-bottom: var(--mb-2);
+  height: auto;
+  width: 100%;
+}
+.contact__form_searched-div {
+  position: relative;
+  margin-bottom: var(--mb-2);
+  height: auto;
+  width: 100%;
+  margin-top: 3%;
+}
+
+.contact__form-input {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 97%;
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: none;
+  color: var(--text-color);
+  outline: none;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  z-index: 1;
+}
+.contact__message {
+  resize: none;
+}
+.contact__message::-webkit-scrollbar {
+  width: 10px;
+}
+.contact__message::-webkit-scrollbar-track {
+  background: var(--pink);
+}
+
+.contact__message::-webkit-scrollbar-thumb {
+  background-color: var(--title-color);
+  border-radius: 20px;
+}
+.contact__message::-webkit-scrollbar-thumb:hover {
+  background-color: var(--title-color-dark);
+}
+
+.contact__form-tag {
+  position: absolute;
+  top: -0.95em;
+  left: 1.25rem;
+  font-size: var(-smaller-font-size);
+  padding: 0.25rem;
+  background-color: var(--body-color);
+  z-index: 10;
+}
+
+.contact__form-area {
+  height: 11rem;
+  resize: none;
+}
+.contact__form-area textarea {
+  resize: none;
+}
