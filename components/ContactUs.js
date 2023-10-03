@@ -5,15 +5,13 @@ import Banner from '../public/images/banner.png';
 import Image from 'next/image';
 
 const ContactUs = () => {
-  const phoneNumber = '573202193192';
   const form = useRef();
-  const router = useRouter();
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [company, setCompany] = useState('');
   const [phone, setPhone] = useState('');
   const [city, setCity] = useState('');
-  const [ticketNumber, setTicketNumber] = useState('');
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -29,9 +27,6 @@ const ContactUs = () => {
         (result) => {
           console.log(result.text);
 
-          // Una vez enviado el correo, redirigir a WhatsApp
-          redirectToWhatsApp();
-
           // Limpiar los campos del formulario
           setName('');
           setPhone('');
@@ -45,14 +40,6 @@ const ContactUs = () => {
       );
   };
 
-  const redirectToWhatsApp = () => {
-    const whatsappMessage = `¡Hola Moraequipos! Escanee el código en el Congreso de Bacteriólogos de Medellín. Soy *${name}* y pude descargar el PDF.`;
-    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
-      whatsappMessage
-    )}`;
-    router.push(url);
-  };
-
   const tab = <>&nbsp;&nbsp;</>;
 
   const handleDownloadPDF = () => {
@@ -61,17 +48,6 @@ const ContactUs = () => {
 
     // Abre una nueva ventana o pestaña del navegador con el PDF
     window.open(pdfUrl, '_blank');
-    const fakeEvent = {
-      preventDefault: () => {}, // Define una función preventDefault vacía
-    };
-    sendEmail(fakeEvent);
-    redirectToWhatsAppWithDelay();
-  };
-  const redirectToWhatsAppWithDelay = () => {
-    // Agrega un retraso de 10 segundos (10000 milisegundos) antes de redirigir
-    setTimeout(() => {
-      redirectToWhatsApp();
-    }, 10000);
   };
 
   return (
@@ -157,17 +133,12 @@ const ContactUs = () => {
           </label>
         </div>
 
-        <input type="hidden" name="user_ticket" value={ticketNumber} />
         <br />
         <button className="button button--flex btn-contact" type="submit">
           <span className="text-white">Descargar PDF</span>
         </button>
       </form>
       <br />
-      <p>
-        Serás redirigido a WhatsApp para que puedas contactarnos directamente y
-        así sabremos que pudiste ¡descargar nuestro PDF!.
-      </p>
     </div>
   );
 };
