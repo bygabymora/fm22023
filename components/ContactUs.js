@@ -1,8 +1,10 @@
 import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
-
 import Banner from '../public/images/banner.png';
 import Image from 'next/image';
+import { toast } from 'react-toastify';
+import { getError } from '../utils/error.js';
+import axios from 'axios';
 
 const ContactUs = () => {
   const form = useRef();
@@ -12,6 +14,26 @@ const ContactUs = () => {
   const [company, setCompany] = useState('');
   const [phone, setPhone] = useState('');
   const [city, setCity] = useState('');
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post('/api/newcontact', {
+        formulario: 'Volante',
+        nombre: name,
+        telefono: phone,
+        ciudad: city,
+        empresa: company,
+        email: email,
+      });
+
+      form.current.reset();
+      toast.success('');
+    } catch (err) {
+      toast.error(getError(err));
+    }
+    setTimeout(redirectToWhatsApp, 20000);
+  };
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -39,7 +61,13 @@ const ContactUs = () => {
         }
       );
   };
-
+  const redirectToWhatsApp = () => {
+    const whatsappMessage = `¡Hola Moraequipos! Estuve en el Congreso Internacional del CNB en Medellín soy *${name}* y recibí el PDF a mi correo. ¡Muchas gracias!.`;
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      whatsappMessage
+    )}`;
+    router.push(url);
+  };
   const tab = <>&nbsp;&nbsp;</>;
 
   const handleDownloadPDF = () => {
@@ -67,7 +95,8 @@ const ContactUs = () => {
         ref={form}
         onSubmit={(e) => {
           sendEmail(e);
-          handleDownloadPDF(); // Llama a la función para abrir el PDF
+          handleDownloadPDF();
+          submitHandler(e);
         }}
       >
         <div className="contact__form-div">
