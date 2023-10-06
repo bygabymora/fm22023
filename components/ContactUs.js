@@ -5,15 +5,18 @@ import Image from 'next/image';
 import { toast } from 'react-toastify';
 import { getError } from '../utils/error.js';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
 const ContactUs = () => {
   const form = useRef();
-
+  const phoneNumber = '573202193192';
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [company, setCompany] = useState('');
   const [phone, setPhone] = useState('');
   const [city, setCity] = useState('');
+
+  const router = useRouter();
 
   const submitHandler = async (e) => {
     e.preventDefault();
