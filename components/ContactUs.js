@@ -36,6 +36,7 @@ const ContactUs = () => {
       toast.error(getError(err));
     }
     setTimeout(redirectToWhatsApp, 20000);
+    handleDownloadPDF();
   };
 
   const sendEmail = (e) => {
@@ -98,7 +99,6 @@ const ContactUs = () => {
         ref={form}
         onSubmit={(e) => {
           sendEmail(e);
-          handleDownloadPDF();
           submitHandler(e);
         }}
       >
