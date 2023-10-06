@@ -35,8 +35,8 @@ const ContactUs = () => {
     } catch (err) {
       toast.error(getError(err));
     }
-    setTimeout(redirectToWhatsApp, 20000);
-    handleDownloadPDF();
+    redirectToWhatsApp();
+    setTimeout(handleDownloadPDF, 10000);
   };
 
   const sendEmail = (e) => {
@@ -66,7 +66,7 @@ const ContactUs = () => {
       );
   };
   const redirectToWhatsApp = () => {
-    const whatsappMessage = `¡Hola Moraequipos! Estuve en el Congreso Internacional del CNB en Medellín soy *${name}* y recibí el PDF a mi correo. ¡Muchas gracias!.`;
+    const whatsappMessage = `¡Hola Moraequipos! Estuve en el Congreso Internacional del CNB en Medellín soy *${name}*. ¡Muchas gracias por el PDF!.`;
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
       whatsappMessage
     )}`;
