@@ -146,7 +146,11 @@ const ContactUs = () => {
             value={email}
             required
           />
-          <div>A este correo recibirás tu PDF</div>
+          <div>
+            A este correo recibirás tu PDF <br />
+            (Por favor revisa tu carpeta de Correo no deseado/SPAM y déjanos
+            saber que recibiste el correo)
+          </div>
         </div>
 
         <div className="privacy-checkbox">
