@@ -36,7 +36,6 @@ const ContactUs = () => {
       toast.error(getError(err));
     }
     redirectToWhatsApp();
-    setTimeout(handleDownloadPDF, 10000);
   };
 
   const sendEmail = (e) => {
@@ -66,21 +65,13 @@ const ContactUs = () => {
       );
   };
   const redirectToWhatsApp = () => {
-    const whatsappMessage = `¡Hola Moraequipos! Estuve en el Congreso Internacional del CNB en Medellín soy *${name}*. ¡Muchas gracias por el PDF!.`;
+    const whatsappMessage = `¡Hola Moraequipos! Estuve en el Congreso Internacional del CNB en Medellín soy *${name}*. Tengo el correo con el PDF ¡Muchas gracias!.`;
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
       whatsappMessage
     )}`;
     router.push(url);
   };
   const tab = <>&nbsp;&nbsp;</>;
-
-  const handleDownloadPDF = () => {
-    // Ruta al archivo PDF en la carpeta pública
-    const pdfUrl = '/moraequipos.pdf'; // Asegúrate de que la ruta sea correcta
-
-    // Abre una nueva ventana o pestaña del navegador con el PDF
-    window.open(pdfUrl, '_blank');
-  };
 
   return (
     <div className="contact__container text-center">
@@ -90,7 +81,7 @@ const ContactUs = () => {
         pura.
       </h3>
       <p>
-        Por favor ingresa tus datos y podrás descargar el PDF con la
+        Por favor ingresa tus datos y te enviaremos un PDF con toda la
         información.
       </p>
       <br />
@@ -155,7 +146,9 @@ const ContactUs = () => {
             value={email}
             required
           />
+          <div>A este correo recibirás tu PDF</div>
         </div>
+
         <div className="privacy-checkbox">
           <input type="checkbox" id="dataConsent" name="dataConsent" required />
           {tab}
@@ -167,7 +160,7 @@ const ContactUs = () => {
 
         <br />
         <button className="button button--flex btn-contact" type="submit">
-          <span className="text-white">Descargar PDF</span>
+          <span className="text-white">Enviar el PDF</span>
         </button>
       </form>
       <br />
